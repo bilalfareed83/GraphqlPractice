@@ -5,6 +5,7 @@ const STUDENT_LIST = gql`
   query GetStudent {
     students{
         name
+        age
     }
   }
 `;
@@ -16,10 +17,14 @@ const Students = () => {
     
     if (error) return <p>error</p>
 
-    const {students} = data
-    return (
+  const { students } = data
+  console.log(students)
+  
+  return (
+      
         <div>
-            <h3>Student list</h3>
+          <h3>Student list</h3>
+      {students.map((student, i) => <li key={i}>{student.name}</li>)}
         </div>
     )
 }
